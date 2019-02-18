@@ -3,11 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-	<bean id="StudentRepository" name="StudentRepository"
-		class="com.howtodoinjava.repository.StudentRepositoryImpl">
+	<bean id="StudentService1" name="StudentService1"
+		class="com.howtodoinjava.service.StudentServiceImpl1">
 	</bean>
-	<bean id="StudentRepository1"
+	<bean id="StudentRepository1" name="StudentRepository1"
 		class="com.howtodoinjava.repository.StudentRepositoryImpl1">
 	</bean>
 </beans>

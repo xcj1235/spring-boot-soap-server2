@@ -4,12 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="StudentService1" name="StudentService1"
-		class="com.howtodoinjava.repository.StudentServiceImpl1">
+		class="com.howtodoinjava.service.StudentServiceImpl1">
 	</bean>
 	<bean id="StudentRepository1" name="StudentRepository1"
-		class="com.howtodoinjava.repository.StudentRepositoryImpl1">
-	</bean>
-	<bean id="StudentRepository1"
 		class="com.howtodoinjava.repository.StudentRepositoryImpl1">
 	</bean>
 </beans>

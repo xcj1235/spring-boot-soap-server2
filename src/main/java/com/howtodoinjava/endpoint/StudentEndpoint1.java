@@ -20,33 +20,32 @@ import com.howtodoinjava.domainobject.StudentDetailsResponse1;
 import com.howtodoinjava.service.StudentService1;
 
 @Endpoint
-public class StudentEndpoint1 {
-	private static final String NAMESPACE_URI = "http://www.howtodoinjava.com/domainobject";
+public class StudentEndpoint1 implements EndpointConstans {
 	private static final Logger logger = LoggerFactory.getLogger(StudentEndpoint1.class);
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "StudentDetailsRequest1")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = STUDENT_DETAILS_REQUEST_1)
 	@ResponsePayload
 	public StudentDetailsResponse1 getStudent(@RequestPayload StudentDetailsRequest1 request1) throws SOAPException {
 		StudentDetailsResponse1 response1 = new StudentDetailsResponse1();
-		
+
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		StudentService1 service = context.getBean("studentService1", StudentService1.class);
-		
-		response1.setStudent1(service.getUsername1(request1));		
-		if (ObjectUtils.isEmpty(request1.getName1())) {
-			SOAPFault fault;
-			fault = SOAPFactory.newInstance().createFault();
-			fault.setFaultString("400");
-			throw new SOAPFaultException(fault);
+		StudentService1 service = context.getBean("StudentService1", StudentService1.class);
 
-		}
-		if (ObjectUtils.isEmpty(response1.getStudent1())) {
-			SOAPFault fault;
-			fault = SOAPFactory.newInstance().createFault();
-			fault.setFaultString("500");
-			throw new SOAPFaultException(fault);
-		}
+		response1.setStudent1(service.getUsername1(request1));
+//		if (ObjectUtils.isEmpty(request1.getName1())) {
+//			SOAPFault fault;
+//			fault = SOAPFactory.newInstance().createFault();
+//			fault.setFaultString("400");
+//			throw new SOAPFaultException(fault);
+//
+//		}
+//		if (ObjectUtils.isEmpty(response1.getStudent1())) {
+//			SOAPFault fault;
+//			fault = SOAPFactory.newInstance().createFault();
+//			fault.setFaultString("500");
+//			throw new SOAPFaultException(fault);
+//		}
 		return response1;
 	}
 }

@@ -13,15 +13,14 @@ import com.howtodoinjava.domainobject.StudentDetailsResponse;
 import com.howtodoinjava.service.StudentService;
 
 @Endpoint
-public class StudentEndpoint {
-	private static final String NAMESPACE_URI = "http://www.howtodoinjava.com/domainobject";
+public class StudentEndpoint implements EndpointConstans {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudentEndpoint.class);
 
 	@Autowired
 	private StudentService studentService;
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "StudentDetailsRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = STUDENT_DETAILS_REQUEST)
 	@ResponsePayload
 	public StudentDetailsResponse getStudent(@RequestPayload StudentDetailsRequest request) {
 		StudentDetailsResponse response = new StudentDetailsResponse();

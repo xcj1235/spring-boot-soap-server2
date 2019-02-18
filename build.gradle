@@ -25,6 +25,7 @@ task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
     ext.schema = "src/main/resources/studentDetailsWsdl.wsdl"
+//    ext.schema = "src/main/resources/PayPal/PayPalSvc.wsdl"
 
     outputs.dir classesDir
 
@@ -70,7 +71,7 @@ configurations {
 bootJar {
     baseName = 'gs-producing-web-service'
     version =  '0.1.0'
-    //from genJaxb.classesDir
+    from genJaxb.classesDir
 }
 
 // tag::dependencies[]
@@ -87,7 +88,7 @@ dependencies {
 	compile 'javax.activation:javax.activation-api:1.2.0'
 	compile 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
 	
-    //compile(files(genJaxb.classesDir).builtBy(genJaxb))
+    compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }
 // end::dependencies[]
 // end::jaxb[]
