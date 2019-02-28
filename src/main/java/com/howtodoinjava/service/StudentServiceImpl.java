@@ -15,11 +15,14 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	private StudentRepository repository;
-
+	
+	@Autowired
+	private ThreadService threadService;
 	@Override
 	public Student getUsername(StudentDetailsRequest req) {
 		Assert.notNull(req.getName(), "The Student's name must not be null");
 		logger.info(req.getName() + "-----------StudentServiceImpl----------");
+		//threadService.test();
 		return repository.findStudent(req);
 	}
 }

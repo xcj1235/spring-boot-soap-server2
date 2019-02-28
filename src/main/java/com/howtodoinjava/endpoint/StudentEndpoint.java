@@ -25,7 +25,6 @@ public class StudentEndpoint implements EndpointConstans {
 	public StudentDetailsResponse getStudent(@RequestPayload StudentDetailsRequest request) {
 		StudentDetailsResponse response = new StudentDetailsResponse();
 		response.setStudent(studentService.getUsername(request));
-
 		return response;
 	}
 

@@ -1,5 +1,8 @@
 package com.howtodoinjava;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +16,7 @@ import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;
 
 @EnableWs
 @Configuration
-public class Config extends WsConfigurerAdapter
+public class SpringConfig extends WsConfigurerAdapter
 {
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
@@ -55,4 +58,11 @@ public class Config extends WsConfigurerAdapter
 //    {
 //        return new SimpleXsdSchema(new ClassPathResource("school.xsd"));
 //    }
+    
+//　　　 新規スレッド用
+    @Bean
+    public ExecutorService getExecutorTools(){
+        ExecutorService executorService = Executors.newFixedThreadPool(8);
+        return  executorService;
+    }
 }
